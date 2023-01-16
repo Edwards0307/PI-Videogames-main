@@ -1,5 +1,10 @@
 const getGamesHandlers = (req, res) => {
-  res.status(200).send("Esta ruta trae Todos los juegos");
+  const { name } = req.query;
+  if (name) {
+    res.status(200).send(`Esta trae la info del juego ${name}`);
+  } else {
+    res.status(200).send("Trae Todos los juegos");
+  }
 };
 /* 1) Obtener un listado de los videojuegos
 Debe devolver solo los datos necesarios para la ruta principal
@@ -7,16 +12,20 @@ Debe devolver solo los datos necesarios para la ruta principal
 Si no existe ningún videojuego mostrar un mensaje adecuado  */
 
 const getGameHandlers = (req, res) => {
-  res
-    .status(200)
-    .send("Esta ruta trae la info de un usuario determinado por ID");
+  const { id } = req.params;
+  res.status(200).send(`Muestra el detalle del juego con ID ${id}`);
 };
 /* Obtener el detalle de un videojuego en particular
 Debe traer solo los datos pedidos en la ruta de detalle de videojuego
 Incluir los géneros asociados */
 
 const createGamesHandlres = (req, res) => {
-  res.status(200).send("Esta ruta crea un nuevo usuario");
+  const { name, email, phone } = req.body;
+  res.status(200).send(`Esta crea un usuario con estos datos:
+  name: ${name},
+  email: ${email},
+  phone: ${phone},
+  `);
 };
 /* Recibe los datos recolectados desde el formulario controlado de la ruta de creación de videojuego por body
 Crea un videojuego en la base de datos, relacionado a sus géneros. */
