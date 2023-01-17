@@ -27,12 +27,12 @@ module.exports = (sequelize) => {
         type: DataTypes.FLOAT,
       },
       platforms: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.STRING,
         allowNull: false,
       },
       img: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       created: {
         type: DataTypes.BOOLEAN,

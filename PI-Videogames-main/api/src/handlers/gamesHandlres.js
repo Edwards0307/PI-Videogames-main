@@ -1,3 +1,5 @@
+const { createGame } = require("../Controllers/videoGamesController");
+
 const getGamesHandlers = (req, res) => {
   const { name } = req.query;
   if (name) {
@@ -19,13 +21,21 @@ const getGameHandlers = (req, res) => {
 Debe traer solo los datos pedidos en la ruta de detalle de videojuego
 Incluir los géneros asociados */
 
-const createGamesHandlres = (req, res) => {
-  const { name, email, phone } = req.body;
-  res.status(200).send(`Esta crea un usuario con estos datos:
-  name: ${name},
-  email: ${email},
-  phone: ${phone},
-  `);
+const createGamesHandlres = async (req, res) => {
+  try {
+    const { name, description, released, rating, platforms, img } = req.body;
+    const newGame = await createGame(
+      name,
+      description,
+      released,
+      rating,
+      platforms,
+      img
+    );
+    res.status(201).json(newGame);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 /* Recibe los datos recolectados desde el formulario controlado de la ruta de creación de videojuego por body
 Crea un videojuego en la base de datos, relacionado a sus géneros. */
