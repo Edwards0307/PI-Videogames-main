@@ -1,4 +1,7 @@
-const { createGame } = require("../Controllers/videoGamesController");
+const {
+  createGame,
+  getGameById,
+} = require("../Controllers/videoGamesController");
 
 const getGamesHandlers = (req, res) => {
   const { name } = req.query;
@@ -13,17 +16,23 @@ Debe devolver solo los datos necesarios para la ruta principal
   2) Obtener un listado de las primeros 15 videojuegos que contengan la palabra ingresada como query parameter
 Si no existe ningún videojuego mostrar un mensaje adecuado  */
 
-const getGameHandlers = (req, res) => {
+const getGameHandlers = async (req, res) => {
   const { id } = req.params;
-  res.status(200).send(`Muestra el detalle del juego con ID ${id}`);
+  const source = isNaN(id) ? "bdd" : "api";
+  try {
+    const game = await getGameById(id, source);
+    res.status(200).json(game);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 /* Obtener el detalle de un videojuego en particular
 Debe traer solo los datos pedidos en la ruta de detalle de videojuego
 Incluir los géneros asociados */
 
 const createGamesHandlres = async (req, res) => {
+  const { name, description, released, rating, platforms, img } = req.body;
   try {
-    const { name, description, released, rating, platforms, img } = req.body;
     const newGame = await createGame(
       name,
       description,
