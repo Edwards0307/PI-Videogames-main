@@ -1,22 +1,21 @@
 const {
   createGame,
   getGameById,
+  allByNameGames,
+  allGames,
 } = require("../Controllers/videoGamesController");
 
-const getGamesHandlers = (req, res) => {
+const getGamesHandlers = async (req, res) => {
   const { name } = req.query;
-  if (name) {
-    res.status(200).send(`Esta trae la info del juego ${name}`);
-  } else {
-    res.status(200).send("Trae Todos los juegos");
+  try {
+    const findGames = name ? await allByNameGames(name) : await allGames();
+    res.status(200).json(findGames);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
   }
 };
-/* 1) Obtener un listado de los videojuegos
-Debe devolver solo los datos necesarios para la ruta principal
-  2) Obtener un listado de las primeros 15 videojuegos que contengan la palabra ingresada como query parameter
-Si no existe ningún videojuego mostrar un mensaje adecuado  */
 
-const getGameHandlers = async (req, res) => {
+const getGamesHandlersById = async (req, res) => {
   const { id } = req.params;
   const source = isNaN(id) ? "bdd" : "api";
   try {
@@ -26,9 +25,6 @@ const getGameHandlers = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
-/* Obtener el detalle de un videojuego en particular
-Debe traer solo los datos pedidos en la ruta de detalle de videojuego
-Incluir los géneros asociados */
 
 const createGamesHandlres = async (req, res) => {
   const { name, description, released, rating, platforms, img } = req.body;
@@ -46,11 +42,9 @@ const createGamesHandlres = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
-/* Recibe los datos recolectados desde el formulario controlado de la ruta de creación de videojuego por body
-Crea un videojuego en la base de datos, relacionado a sus géneros. */
 
 module.exports = {
-  getGameHandlers,
+  getGamesHandlersById,
   getGamesHandlers,
   createGamesHandlres,
 };
