@@ -9,6 +9,7 @@ const cleanArray = (gamesList) => {
       rating: element.rating,
       platforms: element.platforms?.map((el) => el.platform.name),
       genres: element.genres?.map((el) => el.name),
+      created: false,
     });
   });
   return videogamesApi;
@@ -25,6 +26,7 @@ const cleanArray2 = (gamesList) => {
     released: gamesList.released,
     rating: gamesList.rating,
     platforms: gamesList.platforms?.map((el) => el.platform.name),
+    created: false,
   });
   return videogamesApi;
 };

@@ -27,17 +27,20 @@ const getGamesHandlersById = async (req, res) => {
 };
 
 const createGamesHandlres = async (req, res) => {
-  const { name, description, released, rating, platforms, img } = req.body;
+  const { name, description, genres, released, rating, platforms, img } =
+    req.body;
   try {
     const newGame = await createGame(
       name,
       description,
+      genres,
       released,
       rating,
       platforms,
       img
     );
-    res.status(201).json(newGame);
+
+    res.status(201).send("Juego Creado");
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
