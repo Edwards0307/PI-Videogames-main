@@ -4,6 +4,7 @@ const {
   getGamesHandlers,
   createGamesHandlres,
 } = require("../handlers/gamesHandlres");
+const { validate } = require("../middlewares/validate");
 
 const videogamesRouter = Router();
 
@@ -16,7 +17,7 @@ videogamesRouter.get("/", getGamesHandlers);
 videogamesRouter.get("/:id", getGamesHandlersById);
 /* [] GET / videogame / { idVideogame }: */
 
-videogamesRouter.post("/", createGamesHandlres);
+videogamesRouter.post("/", validate, createGamesHandlres);
 /* [] POST / videogames:*/
 
 module.exports = videogamesRouter;
