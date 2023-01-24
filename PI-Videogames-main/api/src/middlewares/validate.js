@@ -8,6 +8,18 @@ const validate = async (req, res, next) => {
   if (!platforms) return res.status(400).json({ error: "Missing plataforms" });
   if (!genres) return res.status(400).json({ error: "Missing genres" });
 
+  arr = [
+    "PlayStation 2",
+    "PlayStation 3",
+    "PlayStation 4",
+    "PlayStation 5",
+    "PC",
+    "Xbox",
+  ];
+  let cleanArray = platforms.filter((element) => arr.includes(element));
+  if (cleanArray.length !== platforms.length)
+    return res.status(400).json({ error: "Platform not allowed" });
+
   let findBdd = await Videogame.findAll({
     where: {
       name: name,
