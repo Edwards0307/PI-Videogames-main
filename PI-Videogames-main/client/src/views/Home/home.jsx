@@ -8,8 +8,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getGames());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
   return (
     <>
       <h1>Estamos en Home</h1>

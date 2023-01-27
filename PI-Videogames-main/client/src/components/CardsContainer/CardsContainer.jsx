@@ -9,7 +9,7 @@ const CardsContainer = (props) => {
     <div className={style.containerWrapperList}>
       {games.map(({ name, image, released, rating, platforms, genres, id }) => {
         return (
-          <div className={style.wrapperList}>
+          <div key={id} className={style.wrapperList}>
             <Card
               detailId={id}
               name={name}
