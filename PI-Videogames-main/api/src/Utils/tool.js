@@ -1,6 +1,6 @@
-const cleanArray = (gamesList) => {
+const cleanArray = (gamesListApi) => {
   let videogamesApi = [];
-  gamesList.map((element) => {
+  gamesListApi.map((element) => {
     videogamesApi.push({
       id: element.id,
       name: element.name,
@@ -15,23 +15,41 @@ const cleanArray = (gamesList) => {
   return videogamesApi;
 };
 
-const cleanArray2 = (gamesList) => {
+const cleanArray2 = (gamesListApi) => {
   let videogamesApi = [];
   videogamesApi.push({
-    id: gamesList.id,
-    name: gamesList.name,
-    image: gamesList.background_image,
-    genres: gamesList.genres?.map((g) => g.name),
-    description: gamesList.description,
-    released: gamesList.released,
-    rating: gamesList.rating,
-    platforms: gamesList.platforms?.map((el) => el.platform.name),
+    id: gamesListApi.id,
+    name: gamesListApi.name,
+    image: gamesListApi.background_image,
+    genres: gamesListApi.genres?.map((g) => g.name),
+    description: gamesListApi.description,
+    released: gamesListApi.released,
+    rating: gamesListApi.rating,
+    platforms: gamesListApi.platforms?.map((el) => el.platform.name),
     created: false,
   });
   return videogamesApi;
 };
 
+const cleanArrayGenres = (gamesListBdd) => {
+  let videogamesBdd = [];
+  gamesListBdd.map((element) => {
+    videogamesBdd.push({
+      id: element.id,
+      name: element.name,
+      image: element.background_image,
+      released: element.released,
+      rating: element.rating,
+      platforms: element.platforms,
+      genres: element.genres?.map((el) => el.name),
+      created: element.created,
+    });
+  });
+  return videogamesBdd;
+};
+
 module.exports = {
   cleanArray,
   cleanArray2,
+  cleanArrayGenres,
 };
