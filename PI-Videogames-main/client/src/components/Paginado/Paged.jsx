@@ -1,5 +1,4 @@
 import React from "react";
-// import style from './Pagination.module.css'
 
 const Pagination = ({ gamesPerPage, allGames, paginado }) => {
   const pageNumber = [];
@@ -15,7 +14,7 @@ const Pagination = ({ gamesPerPage, allGames, paginado }) => {
       {pageNumber &&
         pageNumber.map((number) => {
           return (
-            <div>
+            <div key={number}>
               <button onClick={() => paginado(number)}>{number}</button>
             </div>
           );

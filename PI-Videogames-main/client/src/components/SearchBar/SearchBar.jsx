@@ -1,14 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { getGamesName } from "../../redux/actions";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
-  const gamesName = useSelector((state) => state.games); //Estado Global
-  const [name, setName] = useState(); //Estado Local
+  const [name, setName] = useState(""); // Estado Local
 
   function handleInputChange(e) {
-    e.preventDefault();
     setName(e.target.value);
   }
 
@@ -18,18 +16,16 @@ const SearchBar = () => {
     setName("");
   }
 
-  if (gamesName.length === 0) return <h1>Cargando</h1>;
-
   return (
     <div>
       <input
         type="text"
-        placeholder="Search..."
+        placeholder="Buscar..."
         onChange={handleInputChange}
         value={name}
       />
       <button type="submit" onClick={handleSubmit}>
-        Search
+        Buscar
       </button>
     </div>
   );

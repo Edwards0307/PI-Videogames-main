@@ -10,7 +10,7 @@ const CardsContainer = () => {
   const games = useSelector((state) => state.games);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [gamesPerPage, setGamesPerPage] = useState(15);
+  const [gamesPerPage] = useState(15);
 
   // ahora voy a hacer logica numerica para el paginado
   const indexOfLastGame = currentPage * gamesPerPage; //15
