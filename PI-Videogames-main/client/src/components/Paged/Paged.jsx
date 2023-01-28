@@ -1,6 +1,6 @@
 import React from "react";
 
-const Pagination = ({ gamesPerPage, allGames, paginado }) => {
+const Paged = ({ gamesPerPage, allGames, paginado }) => {
   const pageNumber = [];
 
   for (let i = 0; i <= Math.ceil(allGames / gamesPerPage); i++) {
@@ -23,4 +23,4 @@ const Pagination = ({ gamesPerPage, allGames, paginado }) => {
   );
 };
 
-export default Pagination;
+export default Paged;

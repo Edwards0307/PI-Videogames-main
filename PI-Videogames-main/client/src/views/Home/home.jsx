@@ -1,12 +1,10 @@
-import CardsContainer from "../../components/CardsContainer/CardsContainer";
-import SearchBar from "../../components/SearchBar/SearchBar";
-import Pagination from "../../components/Paginado/Paged";
+import { Paged, CardsContainer, Filter } from "../../components/index";
 
 const Home = () => {
   return (
     <div>
-      <SearchBar />
-      <Pagination />
+      <Filter />
+      <Paged />
       <CardsContainer />
     </div>
   );

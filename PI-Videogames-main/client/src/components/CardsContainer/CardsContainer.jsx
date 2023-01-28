@@ -1,9 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getGames } from "../../redux/actions";
-import Card from "../Card/Card";
+import { Card, Paged } from "../index";
 import style from "./CardsContainer.module.css";
-import Pagination from "../Paginado/Paged";
 
 const CardsContainer = () => {
   const dispatch = useDispatch();
@@ -29,7 +28,7 @@ const CardsContainer = () => {
 
   return (
     <div className={style.containerWrapperList}>
-      <Pagination
+      <Paged
         gamesPerPage={gamesPerPage}
         allGames={games.length}
         paginado={paginado}
