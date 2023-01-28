@@ -4,8 +4,8 @@ import { getGamesName } from "../../redux/actions";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
-  const gamesName = useSelector((state) => state.games);
-  const [name, setName] = useState();
+  const gamesName = useSelector((state) => state.games); //Estado Global
+  const [name, setName] = useState(); //Estado Local
 
   function handleInputChange(e) {
     e.preventDefault();

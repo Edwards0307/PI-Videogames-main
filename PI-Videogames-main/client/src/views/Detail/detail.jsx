@@ -9,7 +9,7 @@ const Detail = () => {
   const { id } = useParams();
   const gamesDetail = useSelector((state) => state.gamesDetail);
 
-  const [gameState, SetgameState] = useState([...gamesDetail]);
+  const [gameState, setGameState] = useState([...gamesDetail]);
 
   useEffect(() => {
     dispatch(getGamesDetail(id));
@@ -18,7 +18,7 @@ const Detail = () => {
 
   useEffect(() => {
     if (gamesDetail) {
-      SetgameState([...gamesDetail]);
+      setGameState([...gamesDetail]);
     }
   }, [gamesDetail]);
 
