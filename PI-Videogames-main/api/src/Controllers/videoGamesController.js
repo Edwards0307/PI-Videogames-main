@@ -20,16 +20,18 @@ const allGames = async () => {
         },
       ],
     });
+    let videogamesApi = [];
     for (let i = 0; i < 5; i++) {
       const response = await axios.get(url);
       let gamesListApi = response.data.results;
-      let videogamesApi = cleanArray(gamesListApi);
+      let infoApi = cleanArray(gamesListApi);
+      videogamesApi = [...videogamesApi, ...infoApi];
       url = response.data.next;
-
-      const videogamesBDD = cleanArrayGenres(gamesListBdd);
-
-      return [...videogamesBDD, ...videogamesApi];
     }
+
+    const videogamesBDD = cleanArrayGenres(gamesListBdd);
+
+    return [...videogamesBDD, ...videogamesApi];
   } catch (error) {
     throw new Error("An error occurred while bringing all games");
   }
