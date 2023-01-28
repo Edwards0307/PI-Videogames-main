@@ -4,6 +4,7 @@ const cleanArray = (gamesListApi) => {
     videogamesApi.push({
       id: element.id,
       name: element.name,
+      description: element.description,
       image: element.background_image,
       released: element.released,
       rating: element.rating,
@@ -37,6 +38,7 @@ const cleanArrayGenres = (gamesListBdd) => {
     videogamesBdd.push({
       id: element.id,
       name: element.name,
+      description: element.description,
       image: element.background_image,
       released: element.released,
       rating: element.rating,
