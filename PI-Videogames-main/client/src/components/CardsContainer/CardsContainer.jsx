@@ -1,23 +1,30 @@
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getGames } from "../../redux/actions";
 import Card from "../Card/Card";
 import style from "./CardsContainer.module.css";
-import { useSelector } from "react-redux";
 
-const CardsContainer = (props) => {
+const CardsContainer = () => {
+  const dispatch = useDispatch();
   const games = useSelector((state) => state.games);
+
+  useEffect(() => {
+    dispatch(getGames());
+  }, [dispatch]);
 
   return (
     <div className={style.containerWrapperList}>
-      {games.map(({ name, image, released, rating, platforms, genres, id }) => {
+      {games.map((game) => {
         return (
-          <div key={id} className={style.wrapperList}>
+          <div key={game?.id} className={style.wrapperList}>
             <Card
-              detailId={id}
-              name={name}
-              released={released}
-              rating={rating}
-              platforms={platforms}
-              genres={genres}
-              image={image}
+              id={game?.id}
+              name={game?.name}
+              released={game?.released}
+              rating={game?.rating}
+              platforms={game?.platforms}
+              genres={game?.genres}
+              image={game?.image}
             />
           </div>
         );

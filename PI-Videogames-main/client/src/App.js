@@ -14,7 +14,7 @@ function App() {
 
       <Route path="/Home" render={() => <Home />} />
 
-      <Route path="/Detail" render={() => <Detail />} />
+      <Route path="/Detail/:id" component={Detail} />
 
       <Route path="/Form" render={() => <Form />} />
     </div>

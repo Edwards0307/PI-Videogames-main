@@ -1,20 +1,18 @@
 import axios from "axios";
-
-export const GET_GAMES = "GET_GAMES";
-export const GET_GAMES_ID = "GET_GAMES_ID";
+import { GET_GAMES, GET_GAMES_DETAIL } from "./action-types";
 
 export const getGames = () => {
   return async function (dispatch) {
-    const apiData = await axios.get("http://localhost:3001/videogames");
-    const games = apiData.data;
-    dispatch({ type: GET_GAMES, payload: games });
+    const response = await axios.get("http://localhost:3001/videogames");
+
+    return dispatch({ type: GET_GAMES, payload: response.data });
   };
 };
 
-export const getGamesById = (id) => {
-  return async function (dispatch) {
-    const apiData = await axios.get(`http://localhost:3001/videogames/${id}`);
-    const games = apiData.data;
-    dispatch({ type: "GET_GAMES_ID", payload: games });
+export const getGamesDetail = (id) => {
+  return function (dispatch) {
+    fetch(`http://localhost:3001/videogames/${id}`)
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: GET_GAMES_DETAIL, payload: data }));
   };
 };
