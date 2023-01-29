@@ -23,7 +23,7 @@ const cleanArray2 = (gamesListApi) => {
     name: gamesListApi.name,
     image: gamesListApi.background_image,
     genres: gamesListApi.genres?.map((g) => g.name),
-    description: gamesListApi.description,
+    description: gamesListApi.description_raw,
     released: gamesListApi.released,
     rating: gamesListApi.rating,
     platforms: gamesListApi.platforms?.map((el) => el.platform.name),
