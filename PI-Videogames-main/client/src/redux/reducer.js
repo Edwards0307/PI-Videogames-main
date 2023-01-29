@@ -3,12 +3,13 @@ import {
   GET_GAMES_DETAIL,
   GET_GAMES_NAME,
   FILTER_GAMES,
+  FILTER_GAMES_CREATE,
 } from "./action-types";
 
 const initialState = {
   games: [],
+  backupGames: [],
   gamesDetail: [],
-  allGames: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -17,7 +18,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         games: action.payload,
-        allGames: action.payload,
+        backupGames: action.payload,
       };
 
     case GET_GAMES_DETAIL:
@@ -33,7 +34,7 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case FILTER_GAMES:
-      let allGames = state.allGames;
+      let allGames = state.backupGames;
       let filterGames =
         action.payload === "All Genres"
           ? allGames
@@ -43,6 +44,18 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         games: filterGames,
+      };
+
+    case FILTER_GAMES_CREATE:
+      let backup = state.backupGames;
+      let filterCreate =
+        action.payload === "Bdd"
+          ? backup.filter((element) => element.created)
+          : backup.filter((element) => !element.created);
+      return {
+        ...state,
+        games:
+          action.payload === "All Games" ? state.backupGames : filterCreate,
       };
 
     default:

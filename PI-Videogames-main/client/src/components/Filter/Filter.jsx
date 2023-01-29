@@ -1,4 +1,4 @@
-import { filterGamesByGenres } from "../../redux/actions";
+import { filterGamesByGenres, filterGamesByCreate } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 
 const Filter = () => {
@@ -6,6 +6,10 @@ const Filter = () => {
 
   const handleFilterGenres = (event) => {
     dispatch(filterGamesByGenres(event.target.value));
+  };
+
+  const handleFilterGames = (event) => {
+    dispatch(filterGamesByCreate(event.target.value));
   };
 
   return (
@@ -33,7 +37,7 @@ const Filter = () => {
         <option value="Card"> Card</option>
       </select>
 
-      <select>
+      <select onChange={(event) => handleFilterGames(event)}>
         <option value="All Games">All Games</option>
         <option value="Api">Api Games</option>
         <option value="Bdd">Bdd Games</option>

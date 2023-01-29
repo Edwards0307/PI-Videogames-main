@@ -4,6 +4,7 @@ import {
   GET_GAMES_DETAIL,
   GET_GAMES_NAME,
   FILTER_GAMES,
+  FILTER_GAMES_CREATE,
 } from "./action-types";
 
 export const getGames = () => {
@@ -33,5 +34,11 @@ export const getGamesName = (name) => {
 export const filterGamesByGenres = (payload) => {
   return function (dispatch) {
     dispatch({ type: FILTER_GAMES, payload });
+  };
+};
+
+export const filterGamesByCreate = (payload) => {
+  return function (dispatch) {
+    dispatch({ type: FILTER_GAMES_CREATE, payload });
   };
 };

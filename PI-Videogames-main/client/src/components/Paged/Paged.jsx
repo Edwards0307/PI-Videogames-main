@@ -6,7 +6,7 @@ const Paged = ({ gamesPerPage, allGames, paged }) => {
   for (let i = 0; i <= Math.ceil(allGames / gamesPerPage); i++) {
     pageNumber.push(i + 1);
   }
-
+  pageNumber.pop();
   return (
     <nav>
       {pageNumber &&
