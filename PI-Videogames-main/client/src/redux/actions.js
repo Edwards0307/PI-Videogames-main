@@ -1,5 +1,10 @@
 import axios from "axios";
-import { GET_GAMES, GET_GAMES_DETAIL, GET_GAMES_NAME } from "./action-types";
+import {
+  GET_GAMES,
+  GET_GAMES_DETAIL,
+  GET_GAMES_NAME,
+  FILTER_GAMES,
+} from "./action-types";
 
 export const getGames = () => {
   return async function (dispatch) {
@@ -22,5 +27,11 @@ export const getGamesName = (name) => {
     fetch(`http://localhost:3001/videogames?name=${name}`)
       .then((response) => response.json())
       .then((data) => dispatch({ type: GET_GAMES_NAME, payload: data }));
+  };
+};
+
+export const filterGamesByGenres = (payload) => {
+  return function (dispatch) {
+    dispatch({ type: FILTER_GAMES, payload });
   };
 };

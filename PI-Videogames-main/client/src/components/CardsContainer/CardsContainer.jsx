@@ -8,8 +8,8 @@ const CardsContainer = () => {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.games);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [gamesPerPage] = useState(15);
+  const [currentPage, setCurrentPage] = useState(1); //Pagina en la que vamos arrancar
+  const [gamesPerPage] = useState(15); // Cantidad de juegos que queremos por paginas
 
   // ahora voy a hacer logica numerica para el paginado
   const indexOfLastGame = currentPage * gamesPerPage; //15
@@ -18,7 +18,7 @@ const CardsContainer = () => {
 
   // declaro una funcion que va a modificar el estado local de CurrentPage, esto lo voy a pasar
   // como prop al componente Paginated
-  const paginado = (pageNumber) => {
+  const paged = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
@@ -31,7 +31,7 @@ const CardsContainer = () => {
       <Paged
         gamesPerPage={gamesPerPage}
         allGames={games.length}
-        paginado={paginado}
+        paged={paged}
       />
 
       {currentGames.map((game) => {

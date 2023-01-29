@@ -1,13 +1,11 @@
 import React from "react";
 
-const Paged = ({ gamesPerPage, allGames, paginado }) => {
+const Paged = ({ gamesPerPage, allGames, paged }) => {
   const pageNumber = [];
 
   for (let i = 0; i <= Math.ceil(allGames / gamesPerPage); i++) {
     pageNumber.push(i + 1);
   }
-
-  pageNumber.pop();
 
   return (
     <nav>
@@ -15,7 +13,7 @@ const Paged = ({ gamesPerPage, allGames, paginado }) => {
         pageNumber.map((number) => {
           return (
             <div key={number}>
-              <button onClick={() => paginado(number)}>{number}</button>
+              <button onClick={() => paged(number)}>{number}</button>
             </div>
           );
         })}
