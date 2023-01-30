@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { getGamesName } from "../../redux/actions";
+import { getGamesName, resedPaged } from "../../redux/actions";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -14,6 +14,7 @@ const SearchBar = () => {
     e.preventDefault();
     dispatch(getGamesName(name));
     setName("");
+    dispatch(resedPaged(1));
   }
 
   return (

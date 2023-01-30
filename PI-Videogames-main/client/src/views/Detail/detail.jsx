@@ -1,4 +1,4 @@
-import { getGamesDetail } from "../../redux/actions";
+import { getGamesDetail, cleanState } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -12,6 +12,7 @@ const Detail = () => {
   const [gameState, setGameState] = useState([...gamesDetail]);
 
   useEffect(() => {
+    dispatch(cleanState());
     dispatch(getGamesDetail(id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getGames } from "../../redux/actions";
+import { getGames, resedPaged } from "../../redux/actions";
 import { Card, Paged } from "../index";
 import style from "./CardsContainer.module.css";
 
@@ -8,7 +8,9 @@ const CardsContainer = () => {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.games);
 
-  const [currentPage, setCurrentPage] = useState(1); //Pagina en la que vamos arrancar
+  const currentPage = useSelector((state) => state.currentPage);
+
+  /* const [currentPage, setCurrentPage] = useState(1); */ //Pagina en la que vamos arrancar
   const [gamesPerPage] = useState(15); // Cantidad de juegos que queremos por paginas
 
   // ahora voy a hacer logica numerica para el paginado
@@ -18,8 +20,8 @@ const CardsContainer = () => {
 
   // declaro una funcion que va a modificar el estado local de CurrentPage, esto lo voy a pasar
   // como prop al componente Paginated
-  const paged = (pageNumber) => {
-    setCurrentPage(pageNumber);
+  const paged = (currentPage) => {
+    dispatch(resedPaged(currentPage));
   };
 
   useEffect(() => {

@@ -3,8 +3,12 @@ import {
   GET_GAMES,
   GET_GAMES_DETAIL,
   GET_GAMES_NAME,
-  FILTER_GAMES,
+  FILTER_GAMES_GENRES,
   FILTER_GAMES_CREATE,
+  ORDER_GAMES_NAME,
+  ORDER_GAMES_RATING,
+  RESET_PAGED,
+  CLEAN_STATE,
 } from "./action-types";
 
 export const getGames = () => {
@@ -33,12 +37,36 @@ export const getGamesName = (name) => {
 
 export const filterGamesByGenres = (payload) => {
   return function (dispatch) {
-    dispatch({ type: FILTER_GAMES, payload });
+    dispatch({ type: FILTER_GAMES_GENRES, payload });
   };
 };
 
 export const filterGamesByCreate = (payload) => {
   return function (dispatch) {
     dispatch({ type: FILTER_GAMES_CREATE, payload });
+  };
+};
+
+export const orderGamesByName = (payload) => {
+  return function (dispatch) {
+    dispatch({ type: ORDER_GAMES_NAME, payload });
+  };
+};
+
+export const orderGamesByRating = (payload) => {
+  return function (dispatch) {
+    dispatch({ type: ORDER_GAMES_RATING, payload });
+  };
+};
+
+export const resedPaged = (payload) => {
+  return function (dispatch) {
+    dispatch({ type: RESET_PAGED, payload });
+  };
+};
+
+export const cleanState = (payload) => {
+  return function (dispatch) {
+    dispatch({ type: CLEAN_STATE, payload: [] });
   };
 };
