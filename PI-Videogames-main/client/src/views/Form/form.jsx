@@ -88,6 +88,31 @@ const Form = () => {
     "Card",
   ];
 
+  const validate = (form) => {
+    let errors = {};
+    if (form.name.length < 2) {
+      errors.name = "-Game Name must have at least 2 characters";
+    }
+    if (form.description.length < 15) {
+      errors.description = "-Description must have at least 15 characters";
+    }
+    if (form.rating < 1 || form.rating > 5) {
+      errors.rating = "-Rating must be between 1 and 5";
+    }
+    if (isNaN(form.rating)) {
+      errors.rating = "-Rating must be a number";
+    }
+    if (form.genres.length < 1) {
+      errors.genres = "-Genres is required";
+    }
+    if (form.platforms.length < 1) {
+      errors.platforms = "-Platforms is required";
+    }
+    return errors;
+  };
+
+  const error = validate(form);
+
   const changeHandler = (event) => {
     const property = event.target.name;
     const value = event.target.value;
@@ -148,6 +173,7 @@ const Form = () => {
           onChange={changeHandler}
           name="name"
         />
+        <p>{error.name}</p>
       </div>
 
       <div>
@@ -158,6 +184,7 @@ const Form = () => {
           onChange={changeHandler}
           name="description"
         />
+        <p>{error.description}</p>
       </div>
 
       <label>Genres: </label>
@@ -176,6 +203,7 @@ const Form = () => {
             </button>
           </span>
         ))}
+        <p>{error.genres}</p>
       </div>
 
       <div>
@@ -186,6 +214,7 @@ const Form = () => {
           onChange={changeHandler}
           name="released"
         />
+        <p>{error.released}</p>
       </div>
 
       <div>
@@ -196,6 +225,7 @@ const Form = () => {
           onChange={changeHandler}
           name="rating"
         />
+        <p>{error.rating}</p>
       </div>
 
       <label>Platforms: </label>
@@ -214,6 +244,7 @@ const Form = () => {
             </button>
           </span>
         ))}
+        <p>{error.platforms}</p>
       </div>
 
       <div>

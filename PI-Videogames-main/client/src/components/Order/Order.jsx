@@ -1,15 +1,17 @@
 import { orderGamesByName, orderGamesByRating } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 
-const Order = () => {
+const Order = ({ update, setUpdate }) => {
   const dispatch = useDispatch();
 
   const handleOrder = (event) => {
     dispatch(orderGamesByName(event.target.value));
+    setUpdate(!update);
   };
 
   const handleRating = (event) => {
     dispatch(orderGamesByRating(event.target.value));
+    setUpdate(!update);
   };
 
   return (
