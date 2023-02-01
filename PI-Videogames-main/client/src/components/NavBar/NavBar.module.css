@@ -1,7 +1,6 @@
 .mainContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  border-radius: 15px;
-  border: 1px solid black;
+  display: inline-flex;
+  justify-content: space-between;
+  width: 96%;
+  padding: 20px;
 }

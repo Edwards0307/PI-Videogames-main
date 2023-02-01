@@ -1,15 +1,7 @@
 import style from "./Card.module.css";
 import { Link } from "react-router-dom";
 
-export default function Card({
-  id,
-  name,
-  released,
-  rating,
-  platforms,
-  genres,
-  image,
-}) {
+export default function Card({ id, name, released, rating, image }) {
   return (
     <div className={style.container}>
       <div className={style.name}>
@@ -25,20 +17,6 @@ export default function Card({
       <h4>Released: {released}</h4>
 
       <h4>Rating: {rating}</h4>
-
-      <h4>Plataforms:</h4>
-      <ul>
-        {platforms.map((platform, id) => (
-          <li key={id}>{platform}</li>
-        ))}
-      </ul>
-
-      <h4>Genres:</h4>
-      <ul>
-        {genres.map((genre, id) => (
-          <li key={id}>{genre}</li>
-        ))}
-      </ul>
     </div>
   );
 }

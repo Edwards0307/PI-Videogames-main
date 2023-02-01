@@ -1,14 +1,14 @@
 import "./App.css";
 import { Home, Detail, Form, Landing } from "./views/index";
-import { Route, useLocation } from "react-router-dom";
-import { NavBar } from "./components/index";
+import { Route /* useLocation */ } from "react-router-dom";
+/* import { NavBar } from "./components/index"; */
 
 function App() {
-  const location = useLocation();
+  /* const location = useLocation(); */
 
   return (
     <div className="App">
-      {location.pathname !== "/" && <NavBar />}
+      {/*       {location.pathname !== "/" && <NavBar />} */}
 
       <Route exact path="/" component={Landing} />
 

@@ -1,4 +1,10 @@
-import { Paged, CardsContainer, Filter, Order } from "../../components/index";
+import {
+  Paged,
+  CardsContainer,
+  Filter,
+  Order,
+  NavBar,
+} from "../../components/index";
 import { useState } from "react";
 
 const Home = () => {
@@ -6,6 +12,7 @@ const Home = () => {
 
   return (
     <div>
+      <NavBar />
       <Order update={update} setUpdate={setUpdate} />
       <Filter />
       <Paged />

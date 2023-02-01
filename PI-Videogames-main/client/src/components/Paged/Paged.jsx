@@ -1,4 +1,5 @@
 import React from "react";
+import style from "./Paged.module.css";
 
 const Paged = ({ gamesPerPage, allGames, paged }) => {
   const pageNumber = [];
@@ -8,7 +9,7 @@ const Paged = ({ gamesPerPage, allGames, paged }) => {
   }
   pageNumber.pop();
   return (
-    <nav>
+    <nav className={style.orderPaged}>
       {pageNumber &&
         pageNumber.map((number) => {
           return (

@@ -1,0 +1,9 @@
+.order {
+  display: flex;
+  justify-content: center;
+  padding: 20px 40px;
+}
+
+select {
+  margin: 0px 30px;
+}

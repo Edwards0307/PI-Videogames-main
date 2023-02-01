@@ -1,4 +1,8 @@
-import { filterGamesByGenres, filterGamesByCreate } from "../../redux/actions";
+import {
+  filterGamesByGenres,
+  filterGamesByCreate,
+  resedPaged,
+} from "../../redux/actions";
 import { useDispatch } from "react-redux";
 
 const Filter = () => {
@@ -6,6 +10,7 @@ const Filter = () => {
 
   const handleFilterGenres = (event) => {
     dispatch(filterGamesByGenres(event.target.value));
+    dispatch(resedPaged(1));
   };
 
   const handleFilterGames = (event) => {

@@ -30,27 +30,32 @@ const CardsContainer = () => {
 
   return (
     <div className={style.containerWrapperList}>
+      <div className={style.cardContainer}>
+        {!currentGames.length ? (
+          <div>
+            <h1>Cargando</h1>
+          </div>
+        ) : (
+          currentGames.map((game) => {
+            return (
+              <div key={game?.id} className={style.wrapperList}>
+                <Card
+                  id={game?.id}
+                  name={game?.name}
+                  released={game?.released}
+                  rating={game?.rating}
+                  image={game?.image}
+                />
+              </div>
+            );
+          })
+        )}
+      </div>
       <Paged
         gamesPerPage={gamesPerPage}
         allGames={games.length}
         paged={paged}
       />
-
-      {currentGames.map((game) => {
-        return (
-          <div key={game?.id} className={style.wrapperList}>
-            <Card
-              id={game?.id}
-              name={game?.name}
-              released={game?.released}
-              rating={game?.rating}
-              platforms={game?.platforms}
-              genres={game?.genres}
-              image={game?.image}
-            />
-          </div>
-        );
-      })}
     </div>
   );
 };

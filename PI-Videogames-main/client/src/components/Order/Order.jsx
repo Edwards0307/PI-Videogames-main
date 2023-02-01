@@ -1,5 +1,10 @@
-import { orderGamesByName, orderGamesByRating } from "../../redux/actions";
+import {
+  orderGamesByName,
+  orderGamesByRating,
+  resedPaged,
+} from "../../redux/actions";
 import { useDispatch } from "react-redux";
+import style from "./Order.module.css";
 
 const Order = ({ update, setUpdate }) => {
   const dispatch = useDispatch();
@@ -7,6 +12,7 @@ const Order = ({ update, setUpdate }) => {
   const handleOrder = (event) => {
     dispatch(orderGamesByName(event.target.value));
     setUpdate(!update);
+    dispatch(resedPaged(1));
   };
 
   const handleRating = (event) => {
@@ -15,7 +21,7 @@ const Order = ({ update, setUpdate }) => {
   };
 
   return (
-    <div>
+    <div className={style.order}>
       <select onChange={(event) => handleOrder(event)}>
         <option value="asc"> A - Z</option>
         <option value="desc"> Z - A</option>

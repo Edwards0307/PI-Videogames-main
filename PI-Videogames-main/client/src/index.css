@@ -7,13 +7,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-image: url("./Image/LandingPage.jpg");
   background-repeat: no-repeat;
-  margin: 0;
-  padding: 0;
   background-attachment: fixed;
   background-size: 100% 100%;
-  left: 10px;
-  padding-top: 10%;
-  padding-left: 3%;
 }
 
 code {
