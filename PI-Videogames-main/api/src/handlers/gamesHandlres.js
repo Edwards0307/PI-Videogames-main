@@ -40,7 +40,7 @@ const createGamesHandlres = async (req, res) => {
       img
     );
 
-    res.status(201).send("Juego Creado");
+    res.status(201).json(newGame);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

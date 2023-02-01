@@ -39,7 +39,7 @@ const cleanArrayGenres = (gamesListBdd) => {
       id: element.id,
       name: element.name,
       description: element.description,
-      image: element.background_image,
+      image: element.img,
       released: element.released,
       rating: element.rating,
       platforms: element.platforms,

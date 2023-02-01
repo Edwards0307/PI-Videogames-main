@@ -130,6 +130,7 @@ const createGame = async (
     },
   });
   newGame.addGenre(genreBdd);
+  return newGame;
 };
 
 module.exports = {
