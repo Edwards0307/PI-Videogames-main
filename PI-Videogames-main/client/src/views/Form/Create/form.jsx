@@ -112,35 +112,6 @@ const Form = () => {
     return errors;
   };
 
-  /*
-
-function handleSubmit(e) {
-  e.preventDefault();
-  let noRepeat = allGames.filter((game) => game.name === input.name);
-  if (noRepeat.length !== 0) {
-    alert("There is already a game with that name, please choose another one.");
-  } else {
-    let error = Object.keys(validate(input));
-    if (error.length !== 0 || !input.genres.length || !input.platforms.length) {
-      alert("Please, fill in the fields correctly");
-      return;
-    } else {
-      dispatch(postVideogame(input));
-      alert("The game has been created!!");
-      setInput({
-        name: "",
-        image: "",
-        released: "",
-        description: "",
-        rating: "",
-        platforms: [],
-        genres: [],
-      });
-    }
-    history.push("/home");
-  }
-} */
-
   const error = validate(form);
 
   const changeHandler = (event) => {
@@ -152,7 +123,10 @@ function handleSubmit(e) {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    axios.post("http://localhost:3001/videogames", form);
+    axios.post(
+      "https://pi-videogames-main-production-fe42.up.railway.app/videogames",
+      form
+    );
   };
 
   function handleSelectP(event) {
